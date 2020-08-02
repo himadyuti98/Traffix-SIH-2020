@@ -19,26 +19,35 @@ args = parser.parse_args()
 
 data = pkl.load(open(args.label_dir,'rb'))
 for key, value in data.items():
+    
+    
     video_name = key
-    video_dir = os.path.join(args.root_dir, 'images', value['video_name'])
-
-    out_dir = os.path.join(args.root_dir, 'frames', video_name)
-    if not os.path.isdir(out_dir):
-        os.mkdir(out_dir)
-
-    out_dir = os.path.join(out_dir, 'images')
-    if not os.path.isdir(out_dir):
-        os.mkdir(out_dir)
-
-    start = value['clip_start']
-    end = value['clip_end']
-    for new_i, old_i in enumerate(range(int(start), int(end)+1)):
-        img_name = str(old_i).zfill(6) + '.jpg'
-        old_img_path = os.path.join(video_dir, img_name)
-        new_img_path = os.path.join(out_dir, str(new_i + 1).zfill(6) + '.jpg')
+    video_dir = os.path.join(args.root_dir, 'IMAGE_DIR', "VIDEO_DIR"+value['video_name'])
+    print(video_dir)
+    
+    #go only if the frames for that video is downloaded
+    if os.path.isdir(video_dir) :
+        print(video_dir)
+        out_dir = os.path.join(args.root_dir, 'frames', video_name)
+        print(out_dir)
+        if not os.path.isdir(out_dir):
+            print("Not dir - make dir")
+            os.mkdir(out_dir)
+        out_dir = os.path.join(out_dir, 'IMAGE_DIR')
+        print(out_dir)
+        if not os.path.isdir(out_dir):
+            print("Not dir - make dir")
+            os.mkdir(out_dir)
+        
         try:
-            shutil.copy(old_img_path, new_img_path)
-        except:
+            start = value['clip_start']
+            end = value['clip_end']
+            for new_i, old_i in enumerate(range(int(start), int(end)+1)):
+                img_name = str(old_i).zfill(6) + '.jpg'
+                old_img_path = os.path.join(video_dir, img_name)
+                new_img_path = os.path.join(out_dir, str(new_i + 1).zfill(6) + '.jpg')
+                shutil.copy(old_img_path, new_img_path)
+        except :
             continue
 
     

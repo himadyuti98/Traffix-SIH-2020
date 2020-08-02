@@ -26,7 +26,7 @@ if not os.path.isdir(DOWNLOAD_DIR):
     os.makedirs(DOWNLOAD_DIR)
 
 '''Download videos'''
-ydl_opt = {'outtmpl': DOWNLOAD_DIR + '/%(id)s.%(ext)s',
+ydl_opt = {'outtmpl': DOWNLOAD_DIR + '%(id)s.%(ext)s',
            'format': 'mp4'}
 ydl = youtube_dl.YoutubeDL(ydl_opt)
 '''
@@ -37,10 +37,20 @@ with ydl:
     )
 '''
 url_list = open(args.url_file,'r').readlines()
-ydl.download(url_list)
-print("Download finished!")
 
-all_videos = sorted(glob.glob(DOWNLOAD_DIR + '/*.mp4'))
+counter = 0
+for url in url_list :
+    try :
+        list_single_url = []
+        list_single_url.append(url)
+        ydl.download(list_single_url)
+        print(counter)
+        counter = counter+1
+        print("Download finished!")
+    except :
+        continue
+
+all_videos = sorted(glob.glob(DOWNLOAD_DIR + '*.mp4'))
 print("Number of videos: ", len(all_videos))
 
 if args.to_images:
@@ -56,7 +66,7 @@ if args.to_images:
     downsample_rate = args.downsample_rate
     for video_idx, file_name in enumerate(all_videos):
         video_name = file_name.split('/')[-1][:-4]
-        image_dir = OUT_DIR + '/' + video_name + '/'
+        image_dir = OUT_DIR + video_name + '/'
         try:
             os.stat(image_dir)
         except:
