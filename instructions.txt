@@ -1,0 +1,10 @@
+1. Clone the repository
+2. Download the checkpoint from 
+https://drive.google.com/drive/folders/1fQlH6oSfjVC9hlwq8IgcR-ACR3KijEHf?usp=sharing 
+and upload in your drive in the path 
+/content/drive/My Drive/Colab Notebooks/SIH/utilities/checkpoints/networkc3d_train_batch_200.ckpt
+3. Use the SIH-django.ipynb notebook to execute the code.
+4. In the first line, replace with your github username and password. (Only collaborators will be able to clone the repository)
+5. Execute all the cells in order.
+6. After exectuing the cell containing !python manage.py runserver, click on the link that was the output of the previous cell.
+7. If all instructions were followed correctly, the webpage will work properly.
