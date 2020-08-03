@@ -8,3 +8,4 @@ and upload in your drive in the path
 5. Execute all the cells in order.
 6. After exectuing the cell containing !python manage.py runserver, click on the link that was the output of the previous cell.
 7. If all instructions were followed correctly, the webpage will work properly.
+8. Some of the videos can be found at https://drive.google.com/drive/folders/1HepZ2mdGls6p7qFGOr0PjdJE9PNts3y5?usp=sharing
