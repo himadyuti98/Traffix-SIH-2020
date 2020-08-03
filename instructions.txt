@@ -3,7 +3,7 @@
 https://drive.google.com/drive/folders/1fQlH6oSfjVC9hlwq8IgcR-ACR3KijEHf?usp=sharing 
 and upload in your drive in the path 
 /content/drive/My Drive/Colab Notebooks/SIH/utilities/checkpoints/networkc3d_train_batch_200.ckpt
-3. Use the SIH-django.ipynb notebook to execute the code.
+3. Use the SIH-django.ipynb notebook to execute the code in Google Colab.
 4. In the first line, replace with your github username and password. (Only collaborators will be able to clone the repository)
 5. Execute all the cells in order.
 6. After exectuing the cell containing !python manage.py runserver, click on the link that was the output of the previous cell.
