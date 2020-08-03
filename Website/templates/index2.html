@@ -1,0 +1,79 @@
+{% load staticfiles %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}"> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script src="/static/js/scripts.js"></script> -->
+</head>
+
+<body style="background-color: #f5f5f5">
+	<div class='ui center aligned container' id='navbarhome'>
+		<nav class='navbar navbar-inverse navbar-fixed-top'>
+			<div class='navbar-header'>
+			</div>
+		</nav>
+	</div>
+
+	<br><br><br><br>
+
+	<div class="container">
+		<center>
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="form-group">
+				<input type="file" name="invid" class="ui large blue button">
+				</div>
+				<button type="submit" class="ui huge black button" id='vidBut' onclick="showLoading();">Upload</button>
+			</form>
+		</center>
+	</div>
+
+	<div class="container">
+		<center>
+			<img id='loading' class='hidden' src='media/loading.gif' style="opacity: 0.0;">
+		</center>
+	</div> 
+
+{% if flag == 2 %}
+
+	<center>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-6">
+					<video width="500" height="300" controls autoplay loop>
+						<source src="media/{{vid.inputVid}}" type="video/mp4">
+					</video>
+				</div>
+				<div class="col-sm-6">
+					<img width="500" height="300" src="media/{{vid.outputImg}}">
+				</div>
+			</div>
+		</div>
+	</center>
+
+{% else %}
+
+{% endif %}
+
+</body>
+
+<script type="text/javascript">
+
+function showLoading()
+{
+	/*$('#loading').removeClass('hidden');*/
+	//$('#loading').style.opacity="1.0";
+	document.getElementById("loading").style.opacity = "1.0";
+}
+	
+</script>
+
+</html>
